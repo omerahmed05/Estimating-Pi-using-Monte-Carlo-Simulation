@@ -17,8 +17,9 @@ int main() {
     int randomUserInput{};
     std::cin >> randomUserInput;
 
-    std::uniform_real_distribution<double> dist(0.0,1.0); // instantiate an object which maps the number it is passed (will be a RNG) to a random double in the range of 0.0 to 1.0
-                                                          // uniform distribution, meaning any number in that range is equally likely to get mapped
+    // instantiate an object which maps the number it is passed (will be a RNG) to a random double in the range of 0.0 to 1.0
+        // uniform distribution means that any number in that range is equally likely to get mapped
+    std::uniform_real_distribution<double> dist(0.0,1.0); // generate a random number between 0.0 and 1.0
 
     int inside_circle{}; // total number of points inside the circle
 
@@ -32,7 +33,7 @@ int main() {
      * This is different from creating two separate RNGs with the same seed:
      * doing that would produce identical sequences and result in repeated values.
      */
-    std::mt19937 rng(randomUserInput); 
+    std::mt19937 rng(randomUserInput); // provide seed
 
     // generate the points 
     for (int i = 0; i < numPoints; i++) {
