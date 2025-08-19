@@ -1,8 +1,6 @@
 ### What is the Monte Carlo Simulation?
 
-Monte Carlo Simulation is a way to estimate the answer to a complex problem by using random numbers and repeating an experiment many times. For example, let's say we want to calculate the area of a circle, but we don't know the formula A=πr².
-
-Instead, we draw a rectangle that completely contains the circle. Since we know how to calculate the area of a rectangle (length × width), we generate random points inside the rectangle. Some of those points will fall inside the circle, and some will fall outside. We use the ratio of points that fall inside the circle vs points that fall outside the circle and multiply it by the area of the rectangle. We know that a point has landed inside the circle using the formula: x² + y² ≤ 1. The more points we generate, the better our estimate becomes.
+Monte Carlo Simulation is a way to estimate the answer to a complex problem by using random numbers and repeating an experiment many times.
 
 ```
 Points inside circle / Total points × Area of rectangle ≈ Area of the circle
