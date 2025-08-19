@@ -1,41 +1,46 @@
-### What is the Monte Carlo Simulation?
+# Monte Carlo Pi Estimation
 
-Monte Carlo Simulation is a way to estimate the answer to a complex problem by using random numbers and repeating an experiment many times.
+## Overview
+Monte Carlo simulation estimates complex problems using random sampling and repetition. This implementation estimates π by randomly dropping points in a square containing a quarter circle.
 
-```
-Points inside circle / Total points × Area of rectangle ≈ Area of the circle
-```
+## How It Works
 
-#### Estimating Pi with Monte Carlo
-
-
-##### Unit Square
-A square with side length 1, giving an area of 1.
+### Setup
+- **Unit square**: 1×1 square (area = 1)
+- **Quarter circle**: Radius 1, inscribed in the square (area = π/4)
 
 ![Unit Square](images/unit_square.png)
 
-##### Quarter Circle
-A quarter of a unit circle (radius = 1) is inscribed within the square.
-- Full circle area: π × r² = π × 1² = π
-- Quarter circle area: π/4
-
-##### Random Sampling
-Random points are generated within the unit square. Each point has an x and y coordinate between 0 and 1.
-
-A point (x, y) falls inside the quarter circle if:
+### The Process
+1. Generate random points (x, y) where 0 ≤ x, y ≤ 1
+2. Check if each point falls inside the quarter circle using: x² + y² ≤ 1
+3. Count points inside vs. total points
 
 ![Circle](images/circle.png)
 
-This condition comes from the equation of a circle centered at the origin with radius 1.
+### Mathematics
+Since the quarter circle sits inside the unit square:
 
-Because the quarter circle is fully contained within the square, the ratio of points that fall inside the circle to the total number of points approximates the ratio of their areas:
+```
+Points inside circle / Total points ≈ Area of quarter circle / Area of square
+Points inside circle / Total points ≈ (π/4) / 1
+```
+
+Solving for π:
+```
+π ≈ 4 × (Points inside circle / Total points)
+```
 
 ![Ratio](images/ratio.png)
-
-Solving for π gives the estimation formula:
-
 ![Pi](images/pi.png)
 
-The accuracy of the estimate improves as the number of sampled points increases.
+More sample points = better accuracy.
 
-The code for this is provided in the root directory and can be ran with `g++ estimating_pi.cpp`; `./a.out`.
+## Running the Code
+```bash
+g++ estimating_pi.cpp
+./a.out
+```
+
+## Key Insight
+The beauty of Monte Carlo methods is turning geometric problems into counting problems through random sampling.
